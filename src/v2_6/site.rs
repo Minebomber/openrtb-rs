@@ -42,11 +42,11 @@ pub struct Site {
 
     /// Indicates if the site has been programmatically crawled or human curated.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub mobile: Option<i32>,
+    pub mobile: Option<u32>,
 
     /// Indicates if the site has a privacy policy.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub privacypolicy: Option<i32>,
+    pub privacypolicy: Option<u32>,
 
     /// Details about the Publisher of the site.
     #[serde(skip_serializing_if = "Option::is_none")]

@@ -13,3 +13,13 @@ For the time being this crate will not be published to crates.io, but it can be 
 ```toml
 openrtb26 = { git = "https://github.com/Minebomber/openrtb26-rs" }
 ```
+
+Types are exported by the `openrtb26` module.
+
+```rust
+use openrtb26::BidRequest;
+
+fn main() {
+
+}
+```

@@ -17,7 +17,7 @@ pub struct SeatBid {
 
     /// 0 = impressions can be won individually; 1 = impressions must be won or lost as a group.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub group: Option<i32>,
+    pub group: Option<u32>,
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]

@@ -1,7 +1,7 @@
+use super::*;
+use crate::enums::*;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
-use crate::enums::*;
-use super::*;
 
 /// This object represents an audio type impression.
 ///
@@ -14,39 +14,39 @@ pub struct Audio {
 
     /// Minimum audio ad duration in seconds.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub minduration: Option<i32>,
+    pub minduration: Option<u32>,
 
     /// Maximum audio ad duration in seconds.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub maxduration: Option<i32>,
+    pub maxduration: Option<u32>,
 
     /// Array of supported audio protocols.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub protocols: Option<Vec<i32>>,
+    pub protocols: Option<Vec<u32>>,
 
     /// Indicates the start delay in seconds for pre-roll, mid-roll, or post-roll ad placements.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub startdelay: Option<i32>,
+    pub startdelay: Option<u32>,
 
     /// If multiple ad impressions are offered in the same bid request.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sequence: Option<i32>,
+    pub sequence: Option<u32>,
 
     /// Blocked creative attributes.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub battr: Option<Vec<i32>>,
+    pub battr: Option<Vec<u32>>,
 
     /// Maximum extended ad duration if extension is allowed.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub maxextended: Option<i32>,
+    pub maxextended: Option<u32>,
 
     /// Minimum bit rate in Kbps.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub minbitrate: Option<i32>,
+    pub minbitrate: Option<u32>,
 
     /// Maximum bit rate in Kbps.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub maxbitrate: Option<i32>,
+    pub maxbitrate: Option<u32>,
 
     /// Supported delivery methods.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -58,29 +58,30 @@ pub struct Audio {
 
     /// List of supported API frameworks for this impression.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub api: Option<Vec<i32>>,
+    pub api: Option<Vec<u32>>,
 
     /// Supported DAAST companion ad types.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub companiontype: Option<Vec<i32>>,
+    pub companiontype: Option<Vec<u32>>,
 
     /// The maximum number of ads that can be played in an ad pod.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub maxseq: Option<i32>,
+    pub maxseq: Option<u32>,
 
     /// Type of audio feed.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub feed: Option<i32>,
+    pub feed: Option<u32>,
 
     /// Indicates if the ad is stitched with audio content or delivered independently.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stitched: Option<i32>,
+    pub stitched: Option<u32>,
 
     /// Volume normalization modes.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub nvol: Option<i32>,
+    pub nvol: Option<u32>,
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ext: Option<Value>,
 }
+

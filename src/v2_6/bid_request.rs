@@ -51,7 +51,7 @@ pub struct BidRequest {
     /// Maximum time in milliseconds the exchange allows for bids to be received including
     /// Internet latency to avoid timeout.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub tmax: Option<i32>,
+    pub tmax: Option<u32>,
 
     /// Allowed list of buyer seats (e.g., advertisers, agencies) allowed to bid on this impression.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -102,4 +102,3 @@ pub struct BidRequest {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ext: Option<Value>,
 }
-

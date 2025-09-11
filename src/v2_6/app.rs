@@ -47,11 +47,11 @@ pub struct App {
 
     /// Indicates if the app has a privacy policy.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub privacypolicy: Option<i32>,
+    pub privacypolicy: Option<u32>,
 
     /// 0 = app is free, 1 = the app is a paid version.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub paid: Option<i32>,
+    pub paid: Option<u32>,
 
     /// Details about the Publisher of the app.
     #[serde(skip_serializing_if = "Option::is_none")]

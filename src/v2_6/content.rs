@@ -14,7 +14,7 @@ pub struct Content {
 
     /// Episode number.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub episode: Option<i32>,
+    pub episode: Option<u32>,
 
     /// Content title.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -58,16 +58,16 @@ pub struct Content {
 
     /// Production quality.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub prodq: Option<i32>,
+    pub prodq: Option<u32>,
 
     /// Note: Deprecated in favor of `prodq`.
     /// Video quality.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub videoquality: Option<i32>,
+    pub videoquality: Option<u32>,
 
     /// Type of content (game, video, text, etc.).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub context: Option<i32>,
+    pub context: Option<u32>,
 
     /// Content rating (e.g., MPAA).
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -79,7 +79,7 @@ pub struct Content {
 
     /// Media rating per IQG guidelines.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub qagmediarating: Option<i32>,
+    pub qagmediarating: Option<u32>,
 
     /// Comma separated list of keywords describing the content.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -87,15 +87,15 @@ pub struct Content {
 
     /// 0 = not live, 1 = content is being streamed live.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub livestream: Option<i32>,
+    pub livestream: Option<u32>,
 
     /// 0 = indirect, 1 = direct.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sourcerelationship: Option<i32>,
+    pub sourcerelationship: Option<u32>,
 
     /// Length of content in seconds; appropriate for video or audio.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub len: Option<i32>,
+    pub len: Option<u32>,
 
     /// Content language using ISO-639-1-alpha-2.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -103,7 +103,7 @@ pub struct Content {
 
     /// Indicator of whether or not the content is embeddable.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub embeddable: Option<i32>,
+    pub embeddable: Option<u32>,
 
     /// Additional content data.
     #[serde(skip_serializing_if = "Option::is_none")]

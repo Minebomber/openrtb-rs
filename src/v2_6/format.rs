@@ -8,23 +8,23 @@ use serde_json::Value;
 pub struct Format {
     /// Width in device independent pixels (DIPS).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub w: Option<i32>,
+    pub w: Option<u32>,
 
     /// Height in device independent pixels (DIPS).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub h: Option<i32>,
+    pub h: Option<u32>,
 
     /// Relative width when expressing size as a ratio.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub wratio: Option<i32>,
+    pub wratio: Option<u32>,
 
     /// Relative height when expressing size as a ratio.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub hratio: Option<i32>,
+    pub hratio: Option<u32>,
 
     /// The minimum width in device independent pixels (DIPS) at which the ad will be displayed.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub wmin: Option<i32>,
+    pub wmin: Option<u32>,
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]

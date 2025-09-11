@@ -14,11 +14,11 @@ pub struct Video {
 
     /// Minimum video ad duration in seconds.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub minduration: Option<i32>,
+    pub minduration: Option<u32>,
 
     /// Maximum video ad duration in seconds.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub maxduration: Option<i32>,
+    pub maxduration: Option<u32>,
 
     /// Array of supported video protocols.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -31,15 +31,15 @@ pub struct Video {
 
     /// Width of the video player in device independent pixels (DIPS).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub w: Option<i32>,
+    pub w: Option<u32>,
 
     /// Height of the video player in device independent pixels (DIPS).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub h: Option<i32>,
+    pub h: Option<u32>,
 
     /// Indicates the start delay in seconds for pre-roll, mid-roll, or post-roll ad placements.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub startdelay: Option<i32>,
+    pub startdelay: Option<u32>,
 
     /// Indicates if the impression must be linear, nonlinear, etc.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -51,18 +51,18 @@ pub struct Video {
 
     /// Videos of total duration greater than this number of seconds can be skippable.
     #[serde(default = "default_skip_min", skip_serializing_if = "Option::is_none")]
-    pub skipmin: Option<i32>,
+    pub skipmin: Option<u32>,
 
     /// Number of seconds a video must play before skipping is enabled.
     #[serde(
         default = "default_skip_after",
         skip_serializing_if = "Option::is_none"
     )]
-    pub skipafter: Option<i32>,
+    pub skipafter: Option<u32>,
 
     /// If multiple ad impressions are offered in the same bid request.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sequence: Option<i32>,
+    pub sequence: Option<u32>,
 
     /// Blocked creative attributes.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -70,15 +70,15 @@ pub struct Video {
 
     /// Maximum extended ad duration if extension is allowed.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub maxextended: Option<i32>,
+    pub maxextended: Option<u32>,
 
     /// Minimum bit rate in Kbps.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub minbitrate: Option<i32>,
+    pub minbitrate: Option<u32>,
 
     /// Maximum bit rate in Kbps.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub maxbitrate: Option<i32>,
+    pub maxbitrate: Option<u32>,
 
     /// Indicates if letter-boxing of 4:3 content into a 16:9 window is allowed.
     #[serde(
@@ -117,7 +117,7 @@ pub struct Video {
 
     /// The maximum number of ads that can be played in an ad pod.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub maxseq: Option<i32>,
+    pub maxseq: Option<u32>,
 
     /// Type of video feed.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -135,4 +135,3 @@ pub struct Video {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ext: Option<Value>,
 }
-

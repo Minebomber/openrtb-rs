@@ -70,7 +70,7 @@ pub struct Impression {
     /// Advisory as to the number of seconds the bidder is willing to wait between the auction and
     /// the actual impression.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub exp: Option<i32>,
+    pub exp: Option<u32>,
 
     /// Array of `Metric` objects.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -80,4 +80,3 @@ pub struct Impression {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ext: Option<Value>,
 }
-

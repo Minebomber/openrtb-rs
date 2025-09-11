@@ -124,6 +124,7 @@ mod tests {
                     tactic: None,
                     cat: None,
                     attr: None,
+                    apis: None,
                     api: None,
                     protocol: None,
                     qagmediarating: None,

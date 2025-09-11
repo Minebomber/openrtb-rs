@@ -15,31 +15,31 @@ pub struct Banner {
 
     /// Exact width in device independent pixels (DIPS).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub w: Option<i32>,
+    pub w: Option<u32>,
 
     /// Exact height in device independent pixels (DIPS).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub h: Option<i32>,
+    pub h: Option<u32>,
 
     /// NOTE: Deprecated in favor of the format array.
     /// Maximum width in device independent pixels (DIPS).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub wmax: Option<i32>,
+    pub wmax: Option<u32>,
 
     /// NOTE: Deprecated in favor of the format array.
     /// Maximum height in device independent pixels (DIPS).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub hmax: Option<i32>,
+    pub hmax: Option<u32>,
 
     /// NOTE: Deprecated in favor of the format array.
     /// Minimum width in device independent pixels (DIPS).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub wmin: Option<i32>,
+    pub wmin: Option<u32>,
 
     /// NOTE: Deprecated in favor of the format array.
     /// Minimum height in device independent pixels (DIPS).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub hmin: Option<i32>,
+    pub hmin: Option<u32>,
 
     /// Unique identifier for this banner object.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -77,4 +77,3 @@ pub struct Banner {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ext: Option<Value>,
 }
-

@@ -31,7 +31,7 @@ pub struct BidResponse {
 
     /// Reason for not bidding.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub nbr: Option<i32>,
+    pub nbr: Option<u32>,
 
     /// Placeholder for bidder-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]

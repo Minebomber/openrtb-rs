@@ -16,7 +16,7 @@ pub struct UserAgent {
 
     /// If the browser is running on a mobile device, this object represents the device.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub mobile: Option<i32>,
+    pub mobile: Option<u32>,
 
     /// 1 if the agent prefers a mobile version of the content, if available.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -38,4 +38,3 @@ pub struct UserAgent {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ext: Option<Value>,
 }
-

@@ -18,7 +18,7 @@ pub struct User {
 
     /// Year of birth as a 4-digit integer.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub yob: Option<i32>,
+    pub yob: Option<u32>,
 
     /// Gender, where "M" = male, "F" = female, "O" = known to be other.
     #[serde(skip_serializing_if = "Option::is_none")]

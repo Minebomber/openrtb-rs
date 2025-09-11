@@ -9,11 +9,11 @@ pub fn default_bidfloorcur() -> Option<String> {
     Some("USD".to_string())
 }
 
-pub fn default_skip_min() -> Option<i32> {
+pub fn default_skip_min() -> Option<u32> {
     Some(0)
 }
 
-pub fn default_skip_after() -> Option<i32> {
+pub fn default_skip_after() -> Option<u32> {
     Some(0)
 }
 

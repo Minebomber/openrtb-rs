@@ -65,19 +65,24 @@ pub struct Bid {
 
     /// Set of attributes describing the creative.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub attr: Option<Vec<i32>>,
+    pub attr: Option<Vec<u32>>,
+
+    /// List of supported APIs for the markup.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub apis: Option<Vec<u32>>,
 
     /// API required by the markup if applicable.
+    #[deprecated(note = "Deprecated in favor of `apis`.")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub api: Option<i32>,
+    pub api: Option<u32>,
 
     /// Video response protocol of the markup if applicable.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub protocol: Option<i32>,
+    pub protocol: Option<u32>,
 
     /// Creative media rating per IQG guidelines.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub qagmediarating: Option<i32>,
+    pub qagmediarating: Option<u32>,
 
     /// Language of the creative using ISO-639-1-alpha-2.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -89,23 +94,23 @@ pub struct Bid {
 
     /// Width of the creative in device independent pixels (DIPS).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub w: Option<i32>,
+    pub w: Option<u32>,
 
     /// Height of the creative in device independent pixels (DIPS).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub h: Option<i32>,
+    pub h: Option<u32>,
 
     /// Relative width of the creative when expressing size as a ratio.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub wratio: Option<i32>,
+    pub wratio: Option<u32>,
 
     /// Relative height of the creative when expressing size as a ratio.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub hratio: Option<i32>,
+    pub hratio: Option<u32>,
 
     /// Advisory as to the number of seconds the bidder is willing to wait between the auction and the actual impression.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub exp: Option<i32>,
+    pub exp: Option<u32>,
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]

@@ -21,7 +21,7 @@ pub struct Dooh {
 
     /// The type of venue taxonomy the venue is defined as.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub venuetax: Option<i32>,
+    pub venuetax: Option<u32>,
 
     /// Details about the Publisher of the DOOH medium.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -37,7 +37,7 @@ pub struct Dooh {
 
     /// The taxonomy in use for the cat attribute.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub cattax: Option<i32>,
+    pub cattax: Option<u32>,
 
     /// Comma separated list of keywords about the DOOH medium.
     #[serde(skip_serializing_if = "Option::is_none")]

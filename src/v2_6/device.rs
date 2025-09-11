@@ -59,15 +59,15 @@ pub struct Device {
 
     /// Physical height of the screen in pixels.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub h: Option<i32>,
+    pub h: Option<u32>,
 
     /// Physical width of the screen in pixels.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub w: Option<i32>,
+    pub w: Option<u32>,
 
     /// Screen size as pixels per linear inch.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ppi: Option<i32>,
+    pub ppi: Option<u32>,
 
     /// The ratio of physical pixels to device independent pixels.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -137,4 +137,3 @@ pub struct Device {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ext: Option<Value>,
 }
-

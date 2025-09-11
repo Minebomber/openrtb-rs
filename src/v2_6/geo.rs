@@ -23,11 +23,11 @@ pub struct Geo {
 
     /// Estimated location accuracy in meters.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub accuracy: Option<i32>,
+    pub accuracy: Option<u32>,
 
     /// Number of seconds since this geolocation fix was established.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub lastfix: Option<i32>,
+    pub lastfix: Option<u32>,
 
     /// Service or provider used to determine geolocation from IP address if applicable.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -59,7 +59,7 @@ pub struct Geo {
 
     /// Local time as the number +/- of minutes from UTC.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub utcoffset: Option<i32>,
+    pub utcoffset: Option<u32>,
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]

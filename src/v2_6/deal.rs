@@ -24,7 +24,7 @@ pub struct Deal {
 
     /// Auction type. If "1", then first price auction. If "2", then second price plus auction.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub at: Option<i32>,
+    pub at: Option<u32>,
 
     /// Allowed list of buyer seats allowed to bid on this deal.
     #[serde(skip_serializing_if = "Option::is_none")]

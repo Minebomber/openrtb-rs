@@ -16,11 +16,11 @@ pub struct Native {
 
     /// List of supported API frameworks for this impression.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub api: Option<Vec<i32>>,
+    pub api: Option<Vec<u32>>,
 
     /// Blocked creative attributes.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub battr: Option<Vec<i32>>,
+    pub battr: Option<Vec<u32>>,
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]

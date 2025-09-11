@@ -10,7 +10,7 @@ use serde_json::Value;
 pub struct Pmp {
     /// Indicator of auction eligibility to seats named in the Direct Deals object.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub private_auction: Option<i32>,
+    pub private_auction: Option<u32>,
 
     /// Array of `Deal` objects that convey the specific deals applicable to this impression.
     #[serde(skip_serializing_if = "Option::is_none")]
