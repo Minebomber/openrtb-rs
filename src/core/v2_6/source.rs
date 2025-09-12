@@ -1,4 +1,4 @@
-use crate::enums::*;
+use super::enums::*;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 

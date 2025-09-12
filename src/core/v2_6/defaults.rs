@@ -1,4 +1,4 @@
-use crate::enums::*;
+use super::enums::*;
 
 /// Default functions for fields with default values
 pub fn default_at() -> Option<AuctionType> {

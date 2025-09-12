@@ -11,15 +11,5 @@ This is a set of type definitions derived from the OpenRTB 2.6 specification for
 For the time being this crate will not be published to crates.io, but it can be freely used by adding the following to your `Cargo.toml`:
 
 ```toml
-openrtb26 = { git = "https://github.com/Minebomber/openrtb26-rs" }
-```
-
-Types are exported by the `openrtb26` module.
-
-```rust
-use openrtb26::BidRequest;
-
-fn main() {
-
-}
+openrtb = { git = "https://github.com/Minebomber/openrtb-rs" }
 ```
