@@ -65,6 +65,23 @@ impl Default for Vast {
     }
 }
 
+impl std::fmt::Display for Vast {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match hard_xml::XmlWrite::to_string(self) {
+            Ok(s) => write!(f, "{}", s),
+            Err(_) => Err(std::fmt::Error),
+        }
+    }
+}
+
+impl std::str::FromStr for Vast {
+    type Err = hard_xml::XmlError;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        hard_xml::XmlRead::from_str(s)
+    }
+}
+
 /// Error tracking element for VAST-level errors
 ///
 /// The Error element contains a URI that is pinged when there is an error
