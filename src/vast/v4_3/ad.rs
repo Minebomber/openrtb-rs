@@ -8,7 +8,7 @@ use hard_xml::{XmlRead, XmlWrite};
 /// An Ad element contains all data necessary to display an ad. Each Ad represents either
 /// an InLine ad (containing all creative files and tracking URIs) or a Wrapper ad
 /// (redirecting to another VAST response).
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "Ad")]
 pub struct Ad {
     /// Unique identifier for the ad

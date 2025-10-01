@@ -2,7 +2,7 @@ use super::*;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct Site<Ext = Value> {
     /// Exchange-specific site ID.
     #[serde(skip_serializing_if = "Option::is_none")]

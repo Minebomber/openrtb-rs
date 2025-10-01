@@ -11,7 +11,7 @@ use {
 ///
 /// Native ad units are intended to blend seamlessly into the surrounding content. The Native Subcommittee
 /// has developed a companion specification to OpenRTB called the Dynamic Native Ads API.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct Native<Ext = Value> {
     /// Request payload complying with the Native Ad Specification.
     #[cfg(feature = "native")]

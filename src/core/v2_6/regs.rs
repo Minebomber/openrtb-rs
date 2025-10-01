@@ -2,7 +2,7 @@ use super::enums::*;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct Regs<Ext = Value> {
     /// Flag indicating if this request is subject to the COPPA regulations established by the USA FTC.
     #[serde(skip_serializing_if = "Option::is_none")]

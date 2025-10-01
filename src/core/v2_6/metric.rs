@@ -5,7 +5,7 @@ use serde_json::Value;
 ///
 /// These metrics can offer insight to assist with decisioning such as average recent viewability,
 /// click-through rate, etc.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct Metric<Ext = Value> {
     /// Type of metric being presented using exchange curated string names.
     pub r#type: String,

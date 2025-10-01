@@ -6,7 +6,7 @@ use hard_xml::{XmlRead, XmlWrite};
 ///
 /// The UniversalAdId element provides a unique creative identifier
 /// that is maintained across systems.
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "UniversalAdId")]
 pub struct UniversalAdId {
     /// The registry that issued the ID

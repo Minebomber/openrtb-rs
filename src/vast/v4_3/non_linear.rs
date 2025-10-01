@@ -7,7 +7,7 @@ use hard_xml::{XmlRead, XmlWrite};
 ///
 /// Non-linear ads are overlay ads that display on top of video content
 /// without interrupting playback.
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "NonLinearAds")]
 pub struct NonLinearAds {
     /// Tracking events for non-linear ads
@@ -20,7 +20,7 @@ pub struct NonLinearAds {
 }
 
 /// A single non-linear ad creative
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "NonLinear")]
 pub struct NonLinear {
     /// Optional identifier
@@ -101,7 +101,7 @@ pub enum NonLinearResource {
 }
 
 /// Static image resource
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "StaticResource")]
 pub struct StaticResource {
     /// MIME type of the resource
@@ -114,7 +114,7 @@ pub struct StaticResource {
 }
 
 /// IFrame resource
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "IFrameResource")]
 pub struct IFrameResource {
     /// URI to the IFrame content
@@ -123,7 +123,7 @@ pub struct IFrameResource {
 }
 
 /// HTML resource
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "HTMLResource")]
 pub struct HTMLResource {
     /// HTML content
@@ -132,7 +132,7 @@ pub struct HTMLResource {
 }
 
 /// Click-through for non-linear ads
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "NonLinearClickThrough")]
 pub struct NonLinearClickThrough {
     /// Click-through URI
@@ -141,7 +141,7 @@ pub struct NonLinearClickThrough {
 }
 
 /// Click tracking for non-linear ads
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "NonLinearClickTracking")]
 pub struct NonLinearClickTracking {
     /// Optional identifier

@@ -4,7 +4,7 @@ use serde_json::Value;
 /// This object describes the publisher of the media in which the ad will be displayed.
 ///
 /// The publisher is typically the seller in an OpenRTB transaction.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct Publisher<Ext = Value> {
     /// Exchange-specific publisher ID.
     #[serde(skip_serializing_if = "Option::is_none")]

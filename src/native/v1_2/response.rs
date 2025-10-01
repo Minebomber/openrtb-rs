@@ -6,7 +6,7 @@ use serde_json::Value;
 ///
 /// The native object is the top level JSON object which identifies a native response.
 /// The native creative shall be returned as a JSON-encoded string in the adm field of the Bid Object
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct NativeResponse<Ext = Value> {
     /// Version of the Native Markup version in use
     #[serde(default = "default_ver", skip_serializing_if = "Option::is_none")]
@@ -67,7 +67,7 @@ pub struct NativeResponse<Ext = Value> {
 ///
 /// Corresponds to the Asset Object in the request. The main container object for each asset
 /// requested or supported by Exchange on behalf of the rendering client
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct AssetResponse<Ext = Value> {
     /// Optional if assetsurl/dcourl is being used; required if embedded asset is being used
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -110,7 +110,7 @@ pub struct AssetResponse<Ext = Value> {
 /// Title Response Object - OpenRTB Native 1.2 Section 5.3
 ///
 /// Corresponds to the Title Object in the request, with the value filled in
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct TitleResponse<Ext = Value> {
     /// The text associated with the text element
     pub text: String,
@@ -130,7 +130,7 @@ pub struct TitleResponse<Ext = Value> {
 ///
 /// Corresponds to the Image Object in the request. The Image object to be used for all image
 /// elements of the Native ad such as Icons, Main Image, etc
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct ImageResponse<Ext = Value> {
     /// Required for assetsurl or dcourl responses, not required for embedded asset responses.
     /// The type of image element being submitted from the Image Asset Types table
@@ -162,7 +162,7 @@ pub struct ImageResponse<Ext = Value> {
 /// Corresponds to the Data Object in the request, with the value filled in. The Data Object
 /// is to be used for all miscellaneous elements of the native unit such as Brand Name, Ratings,
 /// Review Count, Stars, Downloads, Price count etc
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct DataResponse<Ext = Value> {
     /// Required for assetsurl/dcourl responses, not required for embedded asset responses.
     /// The type of data element being submitted from the Data Asset Types table
@@ -189,7 +189,7 @@ pub struct DataResponse<Ext = Value> {
 /// Video Response Object - OpenRTB Native 1.2 Section 5.6
 ///
 /// Corresponds to the Video Object in the request, yet containing a value of a conforming VAST tag as a value
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct VideoResponse {
     /// VAST xml
     pub vasttag: String,
@@ -200,7 +200,7 @@ pub struct VideoResponse {
 /// Used for 'call to action' assets, or other links from the Native ad. This Object should be
 /// associated to its peer object in the parent Asset Object or as the master link in the top
 /// level Native Ad response object
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct LinkResponse<Ext = Value> {
     /// Landing URL of the clickable link
     pub url: String,

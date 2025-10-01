@@ -7,7 +7,7 @@ use hard_xml::{XmlRead, XmlWrite};
 ///
 /// Linear ads are video or audio ads that play before (pre-roll), during (mid-roll),
 /// or after (post-roll) the video content.
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "Linear")]
 pub struct Linear {
     /// Indicates whether the player can skip the creative
@@ -40,7 +40,7 @@ pub struct Linear {
 }
 
 /// Container for video click tracking elements
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "VideoClicks")]
 pub struct VideoClicks {
     /// URI to open when the viewer clicks the video
@@ -57,7 +57,7 @@ pub struct VideoClicks {
 }
 
 /// Click-through URL
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "ClickThrough")]
 pub struct ClickThrough {
     /// Optional identifier
@@ -70,7 +70,7 @@ pub struct ClickThrough {
 }
 
 /// Click tracking URL
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "ClickTracking")]
 pub struct ClickTracking {
     /// Optional identifier
@@ -83,7 +83,7 @@ pub struct ClickTracking {
 }
 
 /// Custom click URL
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "CustomClick")]
 pub struct CustomClick {
     /// Optional identifier

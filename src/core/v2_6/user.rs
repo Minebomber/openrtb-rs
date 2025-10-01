@@ -6,7 +6,7 @@ use serde_json::Value;
 ///
 /// The user id is an exchange artifact and may be subject to rotation policies. On mobile, this may
 /// correspond to the ID for Advertisers (IFA).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct User<Ext = Value> {
     /// Exchange-specific ID for the user.
     #[serde(skip_serializing_if = "Option::is_none")]

@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
 /// This object is used to define a channel the content belongs to.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct Channel<Ext = Value> {
     /// Platform-specific channel identifier.
     #[serde(skip_serializing_if = "Option::is_none")]

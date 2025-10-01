@@ -7,7 +7,7 @@ use serde_json::Value;
 /// When subordinate to a Device object, it indicates the location of the device which can also be
 /// interpreted as the user's current location. When subordinate to a User object, it indicates the
 /// location of the user's home base.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct Geo<Ext = Value> {
     /// Latitude from -90.0 to +90.0, where negative is south.
     #[serde(skip_serializing_if = "Option::is_none")]

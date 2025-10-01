@@ -86,7 +86,7 @@ impl std::str::FromStr for Vast {
 ///
 /// The Error element contains a URI that is pinged when there is an error
 /// processing the VAST response.
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "Error")]
 pub struct Error {
     /// The error tracking URI

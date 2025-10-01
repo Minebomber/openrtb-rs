@@ -2,7 +2,7 @@ use super::enums::*;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct Source<Ext = Value> {
     /// Entity responsible for the final impression sale decision.
     #[serde(skip_serializing_if = "Option::is_none")]

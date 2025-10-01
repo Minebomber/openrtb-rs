@@ -5,7 +5,7 @@ use serde_json::Value;
 /// This object should be included if the ad supported content is a Digital Out-Of-Home (DOOH) screen.
 ///
 /// A bid request with a DOOH object must not contain a site or app object.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct Dooh<Ext = Value> {
     /// Exchange-specific DOOH ID.
     #[serde(skip_serializing_if = "Option::is_none")]

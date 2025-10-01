@@ -6,7 +6,7 @@ use serde_json::Value;
 ///
 /// This may be syndicated or non-syndicated content. This object may be useful when syndicated
 /// content contains impressions and does not necessarily match the publisher's general content.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct Content<Ext = Value> {
     /// ID uniquely identifying the content.
     #[serde(skip_serializing_if = "Option::is_none")]

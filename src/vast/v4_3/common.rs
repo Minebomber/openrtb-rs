@@ -6,7 +6,7 @@ use std::fmt;
 
 /// Duration in HH:MM:SS format as specified in VAST
 #[derive(
-    Debug, Clone, PartialEq, Eq, Serialize, Deserialize, hard_xml::XmlWrite, hard_xml::XmlRead,
+    Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize, hard_xml::XmlWrite, hard_xml::XmlRead,
 )]
 #[xml(tag = "Duration")]
 pub struct Duration {
@@ -62,7 +62,7 @@ impl std::str::FromStr for Duration {
 // We'll just implement Display and FromStr for attribute usage
 
 /// MIME type for media files
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
 pub struct MimeType(pub String);
 
 impl MimeType {
@@ -102,7 +102,7 @@ impl<'a> hard_xml::XmlRead<'a> for MimeType {
 }
 
 /// A URI/URL reference
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Uri(pub String);
 
 impl Uri {
@@ -146,7 +146,7 @@ impl<'a> hard_xml::XmlRead<'a> for Uri {
 }
 
 /// Language code (e.g., "en", "es", "fr")
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Language(pub String);
 
 impl Language {
@@ -156,7 +156,7 @@ impl Language {
 }
 
 /// Represents a percentage value (0-100)
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 pub struct Percentage(pub f32);
 
 impl Percentage {
@@ -199,7 +199,7 @@ impl std::str::FromStr for SkipOffset {
 }
 
 /// Ad ID type
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
 pub struct AdId(pub String);
 
 impl AdId {
@@ -209,7 +209,7 @@ impl AdId {
 }
 
 /// Creative ID type
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
 pub struct CreativeId(pub String);
 
 impl CreativeId {
@@ -219,7 +219,7 @@ impl CreativeId {
 }
 
 /// API Framework identifier
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
 pub struct ApiFramework(pub String);
 
 impl ApiFramework {

@@ -7,7 +7,7 @@ use serde_json::Value;
 ///
 /// Many of the fields are non-essential for minimally viable transactions, but are included to
 /// offer fine control when needed. Audio in OpenRTB generally assumes compliance with the DAAST standard.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct Audio<Ext = Value> {
     /// Content MIME types supported (e.g., "audio/mp4").
     pub mimes: Vec<String>,

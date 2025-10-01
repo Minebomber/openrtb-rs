@@ -6,7 +6,7 @@ use serde_json::Value;
 /// that may pertain to this impression.
 ///
 /// The actual deals are represented as a collection of Deal objects.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct Pmp<Ext = Value> {
     /// Indicator of auction eligibility to seats named in the Direct Deals object.
     #[serde(default, skip_serializing_if = "Option::is_none")]

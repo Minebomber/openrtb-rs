@@ -8,7 +8,7 @@ use serde_json::Value;
 /// This object contains a globally unique bid request or auction ID. This `id` attribute is
 /// required as is at least one `Imp` object. Other attributes in this top-level object establish
 /// rules and restrictions that apply to all impressions being offered.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct BidRequest<Ext = Value> {
     /// ID of the bid request, assigned by the exchange, and unique for the exchange's subsequent
     /// tracking of the responses. The exchange may use different values for different recipients.

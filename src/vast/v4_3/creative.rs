@@ -10,7 +10,7 @@ use super::*;
 use hard_xml::{XmlRead, XmlWrite};
 
 /// Container element for one or more Creative elements
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "Creatives")]
 pub struct Creatives {
     /// List of creative elements
@@ -22,7 +22,7 @@ pub struct Creatives {
 ///
 /// Each Creative contains one of Linear, NonLinearAds, or CompanionAds,
 /// which defines the type of creative content.
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "Creative")]
 pub struct Creative {
     /// Optional identifier for the creative

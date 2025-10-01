@@ -4,7 +4,7 @@ use serde_json::Value;
 /// A `SeatBid` object contains one or more `Bid` objects, each of which relates to a specific impression
 /// in the bid request via the `impid` attribute and constitutes an offer to buy that impression for a
 /// given price.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct Bid<Ext = Value> {
     /// Bidder generated bid ID to assist with logging/tracking.
     pub id: String,

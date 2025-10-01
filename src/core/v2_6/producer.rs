@@ -5,7 +5,7 @@ use serde_json::Value;
 ///
 /// This is particularly useful when the content is syndicated and may be distributed through
 /// different publishers and thus when the producer and publisher are not necessarily the same entity.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct Producer<Ext = Value> {
     /// Content producer or originator ID.
     #[serde(skip_serializing_if = "Option::is_none")]

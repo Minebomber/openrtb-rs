@@ -6,7 +6,7 @@ use hard_xml::{XmlRead, XmlWrite};
 ///
 /// The Category element provides IAB standard content categories
 /// for the ad content.
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "Category")]
 pub struct Category {
     /// The authority that defines the categorization scheme

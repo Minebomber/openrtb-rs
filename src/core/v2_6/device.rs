@@ -7,7 +7,7 @@ use serde_json::Value;
 ///
 /// Device information includes its hardware, platform, location, and carrier data. The device can
 /// refer to a mobile handset, a desktop computer, set top box, or other digital device.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct Device<Ext = Value> {
     /// Browser user agent string.
     #[serde(skip_serializing_if = "Option::is_none")]

@@ -4,7 +4,7 @@ use serde_json::Value;
 /// This object is a sub-object of a Format object.
 ///
 /// It defines a format as a set of width and height.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct Format<Ext = Value> {
     /// Width in device independent pixels (DIPS).
     #[serde(skip_serializing_if = "Option::is_none")]

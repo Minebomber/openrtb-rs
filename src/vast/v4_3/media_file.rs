@@ -4,7 +4,7 @@ use super::*;
 use hard_xml::{XmlRead, XmlWrite};
 
 /// Container for media files
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "MediaFiles")]
 pub struct MediaFiles {
     /// List of media files
@@ -169,7 +169,7 @@ pub struct Mezzanine {
 }
 
 /// Interactive creative file
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "InteractiveCreativeFile")]
 pub struct InteractiveCreativeFile {
     /// MIME type
@@ -190,7 +190,7 @@ pub struct InteractiveCreativeFile {
 }
 
 /// Container for closed caption files
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "ClosedCaptionFiles")]
 pub struct ClosedCaptionFiles {
     /// List of closed caption files
@@ -199,7 +199,7 @@ pub struct ClosedCaptionFiles {
 }
 
 /// A closed caption file
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "ClosedCaptionFile")]
 pub struct ClosedCaptionFile {
     /// MIME type

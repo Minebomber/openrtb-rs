@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
 /// Further identification of a software component.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct Brand<Ext = Value> {
     /// Browser name or other software component.
     #[serde(skip_serializing_if = "Option::is_none")]

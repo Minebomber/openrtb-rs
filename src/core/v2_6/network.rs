@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
 /// This object is used to define a content network the content belongs to.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct Network<Ext = Value> {
     /// Network the content belongs to.
     #[serde(skip_serializing_if = "Option::is_none")]

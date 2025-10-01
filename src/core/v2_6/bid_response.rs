@@ -8,7 +8,7 @@ use serde_json::Value;
 /// is an optional response tracking ID for bidders. If specified, it can be included in the subsequent
 /// win notice call if the bidder wins. At least one `seatbid` object is required, which contains at
 /// least one bid for an impression.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct BidResponse<Ext = Value> {
     /// ID of the bid request to which this is a response.
     pub id: String,

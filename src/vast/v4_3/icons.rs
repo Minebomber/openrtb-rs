@@ -4,7 +4,7 @@ use super::*;
 use hard_xml::{XmlRead, XmlWrite};
 
 /// Container for icon elements
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "Icons")]
 pub struct Icons {
     /// List of icons
@@ -137,7 +137,7 @@ pub enum IconResource {
 }
 
 /// Static image resource for icon
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "StaticResource")]
 pub struct IconStaticResource {
     /// MIME type of the resource
@@ -150,7 +150,7 @@ pub struct IconStaticResource {
 }
 
 /// IFrame resource for icon
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "IFrameResource")]
 pub struct IconIFrameResource {
     /// URI to the IFrame content
@@ -159,7 +159,7 @@ pub struct IconIFrameResource {
 }
 
 /// HTML resource for icon
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "HTMLResource")]
 pub struct IconHTMLResource {
     /// HTML content
@@ -168,7 +168,7 @@ pub struct IconHTMLResource {
 }
 
 /// Icon click handling
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "IconClicks")]
 pub struct IconClicks {
     /// Click-through URL
@@ -185,7 +185,7 @@ pub struct IconClicks {
 }
 
 /// Icon click-through
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "IconClickThrough")]
 pub struct IconClickThrough {
     /// Click-through URI
@@ -194,7 +194,7 @@ pub struct IconClickThrough {
 }
 
 /// Icon click tracking
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "IconClickTracking")]
 pub struct IconClickTracking {
     /// Optional identifier
@@ -207,7 +207,7 @@ pub struct IconClickTracking {
 }
 
 /// Icon click fallback images
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "IconClickFallbackImages")]
 pub struct IconClickFallbackImages {
     /// Fallback images
@@ -216,7 +216,7 @@ pub struct IconClickFallbackImages {
 }
 
 /// A single fallback image
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "IconClickFallbackImage")]
 pub struct IconClickFallbackImage {
     /// Width of the image
@@ -233,7 +233,7 @@ pub struct IconClickFallbackImage {
 }
 
 /// Icon view tracking
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "IconViewTracking")]
 pub struct IconViewTracking {
     /// View tracking URI

@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
 /// Structured User-Agent information defined by the IAB Tech Lab for use in OpenRTB
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct UserAgent<Ext = Value> {
     /// Each `Brand` object identifies a browser or similar software component.
     #[serde(skip_serializing_if = "Option::is_none")]

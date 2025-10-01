@@ -5,7 +5,7 @@ use serde_json::Value;
 ///
 /// Its presence with the Pmp collection indicates that this impression is available under the terms
 /// of that deal.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct Deal<Ext = Value> {
     /// A unique identifier for the direct deal.
     pub id: String,

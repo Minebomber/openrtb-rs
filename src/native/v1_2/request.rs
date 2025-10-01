@@ -7,7 +7,7 @@ use serde_json::Value;
 /// The Native Object defines the native advertising opportunity available for bid via this bid request.
 /// It will be included as a JSON-encoded string in the bid request's imp.native field or as a direct
 /// JSON object, depending on the choice of the exchange.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct NativeRequest<Ext = Value> {
     /// Version of the Native Markup version in use
     #[serde(default = "default_ver", skip_serializing_if = "Option::is_none")]
@@ -76,7 +76,7 @@ pub struct NativeRequest<Ext = Value> {
 /// The main container object for each asset requested or supported by Exchange on behalf of the
 /// rendering client. Any object that is required is to be flagged as such. Only one of the
 /// {title,img,video,data} objects should be present in each object.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct AssetRequest<Ext = Value> {
     /// Unique asset ID, assigned by exchange. Typically a counter for the array
     pub id: u32,
@@ -112,7 +112,7 @@ pub struct AssetRequest<Ext = Value> {
 /// Title Request Object - OpenRTB Native 1.2 Section 4.3
 ///
 /// The Title object is to be used for title element of the Native ad
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct TitleRequest<Ext = Value> {
     /// Maximum length of the text in the title element. Recommended to be 25, 90, or 140
     pub len: u32,
@@ -127,7 +127,7 @@ pub struct TitleRequest<Ext = Value> {
 ///
 /// The Image object to be used for all image elements of the Native ad such as Icons, Main Image, etc.
 /// Recommended sizes and aspect ratios are included in the Image Asset Types section
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct ImageRequest<Ext = Value> {
     /// Type ID of the image element supported by the publisher. See Table Image Asset Types
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -169,7 +169,7 @@ pub struct ImageRequest<Ext = Value> {
 ///
 /// The video object to be used for all video elements supported in the Native Ad.
 /// This corresponds to the Video object of OpenRTB
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct VideoRequest<Ext = Value> {
     /// Content MIME types supported. Popular MIME types include, but are not limited to
     /// "video/x-ms-wmv" for Windows Media, and "video/x-flv" for Flash Video, or "video/mp4".

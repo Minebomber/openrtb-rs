@@ -7,7 +7,7 @@ use hard_xml::{XmlRead, XmlWrite};
 ///
 /// Companion ads are banner-style ads that appear around the video player
 /// and remain visible while video content plays.
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "CompanionAds")]
 pub struct CompanionAds {
     /// Indicates whether companion ads are required
@@ -54,7 +54,7 @@ impl std::str::FromStr for CompanionAdsRequired {
 }
 
 /// A single companion ad
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "Companion")]
 pub struct CompanionAd {
     /// Optional identifier
@@ -147,7 +147,7 @@ pub enum CompanionResource {
 }
 
 /// Static image resource for companion
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "StaticResource")]
 pub struct CompanionStaticResource {
     /// MIME type of the resource
@@ -160,7 +160,7 @@ pub struct CompanionStaticResource {
 }
 
 /// IFrame resource for companion
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "IFrameResource")]
 pub struct CompanionIFrameResource {
     /// URI to the IFrame content
@@ -169,7 +169,7 @@ pub struct CompanionIFrameResource {
 }
 
 /// HTML resource for companion
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "HTMLResource")]
 pub struct CompanionHTMLResource {
     /// HTML content
@@ -178,7 +178,7 @@ pub struct CompanionHTMLResource {
 }
 
 /// Click-through for companion ads
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "CompanionClickThrough")]
 pub struct CompanionClickThrough {
     /// Click-through URI
@@ -187,7 +187,7 @@ pub struct CompanionClickThrough {
 }
 
 /// Click tracking for companion ads
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "CompanionClickTracking")]
 pub struct CompanionClickTracking {
     /// Optional identifier
@@ -200,7 +200,7 @@ pub struct CompanionClickTracking {
 }
 
 /// Alt text wrapper
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "AltText")]
 pub struct AltText {
     #[xml(text)]

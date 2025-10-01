@@ -5,7 +5,7 @@ use serde_json::Value;
 /// The data and segment objects together allow additional data about the related object to be specified.
 ///
 /// This applies to the user, device, or other objects as specified by the parent.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct Data<Ext = Value> {
     /// Exchange-specific ID for the data provider.
     #[serde(skip_serializing_if = "Option::is_none")]

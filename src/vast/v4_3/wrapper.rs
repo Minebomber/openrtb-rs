@@ -7,7 +7,7 @@ use hard_xml::{XmlRead, XmlWrite};
 ///
 /// A Wrapper element is used to redirect the video player to another server for the actual ad,
 /// while still allowing the current server to track impressions and other events.
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "Wrapper")]
 pub struct Wrapper {
     /// Indicates whether subsequent wrappers after a requested VAST response is allowed
@@ -64,7 +64,7 @@ pub struct Wrapper {
 }
 
 /// Ad system for wrapper ads
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "AdSystem")]
 pub struct WrapperAdSystem {
     /// The version of the ad system
@@ -77,7 +77,7 @@ pub struct WrapperAdSystem {
 }
 
 /// URI to a VAST response
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "VASTAdTagURI")]
 pub struct VASTAdTagURI {
     /// URI to the VAST response
@@ -86,7 +86,7 @@ pub struct VASTAdTagURI {
 }
 
 /// Impression tracking for wrapper ads
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "Impression")]
 pub struct WrapperImpression {
     /// Optional identifier for the impression
@@ -99,7 +99,7 @@ pub struct WrapperImpression {
 }
 
 /// Blocked ad categories
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "BlockedAdCategories")]
 pub struct BlockedAdCategories {
     /// Category authority
@@ -112,7 +112,7 @@ pub struct BlockedAdCategories {
 }
 
 /// Error element wrapper for Wrapper ads
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "Error")]
 pub struct WrapperError {
     #[xml(text)]

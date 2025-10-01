@@ -7,7 +7,7 @@ use hard_xml::{XmlRead, XmlWrite};
 ///
 /// The InLine element contains all the information necessary to display the ad,
 /// including creative files, tracking URIs, and companion ads.
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "InLine")]
 pub struct InLine {
     /// Name of the ad server that returned the ad
@@ -64,7 +64,7 @@ pub struct InLine {
 }
 
 /// Identifies the ad server that returned the ad
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "AdSystem")]
 pub struct AdSystem {
     /// The version of the ad system
@@ -77,7 +77,7 @@ pub struct AdSystem {
 }
 
 /// Advertiser information
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "Advertiser")]
 pub struct Advertiser {
     /// Optional identifier for the advertiser
@@ -90,7 +90,7 @@ pub struct Advertiser {
 }
 
 /// URI to track an impression
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "Impression")]
 pub struct Impression {
     /// Optional identifier for the impression
@@ -103,7 +103,7 @@ pub struct Impression {
 }
 
 /// Ad title wrapper
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "AdTitle")]
 pub struct AdTitle {
     #[xml(text)]
@@ -111,7 +111,7 @@ pub struct AdTitle {
 }
 
 /// Description wrapper
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "Description")]
 pub struct Description {
     #[xml(text)]
@@ -119,7 +119,7 @@ pub struct Description {
 }
 
 /// Survey wrapper
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "Survey")]
 pub struct Survey {
     #[xml(text)]
@@ -127,7 +127,7 @@ pub struct Survey {
 }
 
 /// Error element wrapper
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "Error")]
 pub struct ErrorElement {
     #[xml(text)]

@@ -7,7 +7,7 @@ use hard_xml::{XmlRead, XmlWrite};
 ///
 /// Viewable impression tracking allows measurement of whether an ad
 /// was actually viewable according to industry standards.
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "ViewableImpression")]
 pub struct ViewableImpression {
     /// Optional identifier
@@ -28,7 +28,7 @@ pub struct ViewableImpression {
 }
 
 /// Tracking for viewable impressions
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "Viewable")]
 pub struct Viewable {
     /// Tracking URI for viewable event
@@ -37,7 +37,7 @@ pub struct Viewable {
 }
 
 /// Tracking for non-viewable impressions
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "NotViewable")]
 pub struct NotViewable {
     /// Tracking URI for not viewable event
@@ -46,7 +46,7 @@ pub struct NotViewable {
 }
 
 /// Tracking for undetermined viewability
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "ViewUndetermined")]
 pub struct ViewUndetermined {
     /// Tracking URI for undetermined viewability

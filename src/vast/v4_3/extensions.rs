@@ -3,7 +3,7 @@
 use hard_xml::{XmlRead, XmlWrite};
 
 /// Container for ad-level extensions
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "Extensions")]
 pub struct Extensions {
     /// List of extensions
@@ -12,7 +12,7 @@ pub struct Extensions {
 }
 
 /// A single extension element
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "Extension")]
 pub struct Extension {
     /// Type identifier for the extension
@@ -25,7 +25,7 @@ pub struct Extension {
 }
 
 /// Container for creative-level extensions
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "CreativeExtensions")]
 pub struct CreativeExtensions {
     /// List of creative extensions
@@ -34,7 +34,7 @@ pub struct CreativeExtensions {
 }
 
 /// A single creative extension element
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "CreativeExtension")]
 pub struct CreativeExtension {
     /// Type identifier for the extension

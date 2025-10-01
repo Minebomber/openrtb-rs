@@ -7,7 +7,7 @@ use hard_xml::{XmlRead, XmlWrite};
 ///
 /// Ad verifications allow third-party verification vendors to provide
 /// executable code that measures viewability and other metrics.
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "AdVerifications")]
 pub struct AdVerifications {
     /// List of verification scripts
@@ -16,7 +16,7 @@ pub struct AdVerifications {
 }
 
 /// A single verification script
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "Verification")]
 pub struct Verification {
     /// Name of the verification vendor
@@ -41,7 +41,7 @@ pub struct Verification {
 }
 
 /// JavaScript verification resource
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "JavaScriptResource")]
 pub struct JavaScriptResource {
     /// API framework (e.g., "omid")
@@ -58,7 +58,7 @@ pub struct JavaScriptResource {
 }
 
 /// Executable verification resource
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "ExecutableResource")]
 pub struct ExecutableResource {
     /// API framework
@@ -75,7 +75,7 @@ pub struct ExecutableResource {
 }
 
 /// Tracking events for verification
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "TrackingEvents")]
 pub struct VerificationTrackingEvents {
     /// List of tracking events
@@ -84,7 +84,7 @@ pub struct VerificationTrackingEvents {
 }
 
 /// A verification tracking event
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "Tracking")]
 pub struct VerificationTracking {
     /// The event type (e.g., "verificationNotExecuted")
@@ -97,7 +97,7 @@ pub struct VerificationTracking {
 }
 
 /// Parameters for the verification script
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "VerificationParameters")]
 pub struct VerificationParameters {
     /// The verification parameters (often Base64 encoded)

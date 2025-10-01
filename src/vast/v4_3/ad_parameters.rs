@@ -6,7 +6,7 @@ use hard_xml::{XmlRead, XmlWrite};
 ///
 /// The AdParameters element provides a string of data that can be passed
 /// to the creative for use with an API framework.
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
+#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
 #[xml(tag = "AdParameters")]
 pub struct AdParameters {
     /// Whether the parameters are XML-encoded

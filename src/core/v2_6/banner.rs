@@ -7,7 +7,7 @@ use serde_json::Value;
 ///
 /// Although the term "banner" may have very specific meaning in other contexts, here it can be
 /// many things including a simple static image, an expandable ad unit, or even in-banner video.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
 pub struct Banner<Ext = Value> {
     /// Array of format objects representing the banner sizes permitted.
     #[serde(skip_serializing_if = "Option::is_none")]
