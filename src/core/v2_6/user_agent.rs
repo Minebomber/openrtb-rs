@@ -5,7 +5,7 @@ use serde_json::Value;
 
 /// Structured User-Agent information defined by the IAB Tech Lab for use in OpenRTB
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub struct UserAgent {
+pub struct UserAgent<Ext = Value> {
     /// Each `Brand` object identifies a browser or similar software component.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub browsers: Option<Vec<Brand>>,
@@ -36,5 +36,5 @@ pub struct UserAgent {
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ext: Option<Value>,
+    pub ext: Option<Ext>,
 }

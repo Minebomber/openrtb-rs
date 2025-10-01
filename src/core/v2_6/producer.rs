@@ -6,7 +6,7 @@ use serde_json::Value;
 /// This is particularly useful when the content is syndicated and may be distributed through
 /// different publishers and thus when the producer and publisher are not necessarily the same entity.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub struct Producer {
+pub struct Producer<Ext = Value> {
     /// Content producer or originator ID.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
@@ -25,5 +25,5 @@ pub struct Producer {
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ext: Option<Value>,
+    pub ext: Option<Ext>,
 }

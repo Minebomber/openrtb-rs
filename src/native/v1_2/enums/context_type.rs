@@ -1,10 +1,10 @@
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 
 /// Context Type IDs - OpenRTB Native 1.2 Section 7.1
-/// 
-/// The context in which the ad appears - what type of content is surrounding the ad 
-/// on the page at a high level. This maps directly to the new Deep Dive on In-Feed Ad Units. 
-/// This denotes the primary context, but does not imply other content may not exist on the 
+///
+/// The context in which the ad appears - what type of content is surrounding the ad
+/// on the page at a high level. This maps directly to the new Deep Dive on In-Feed Ad Units.
+/// This denotes the primary context, but does not imply other content may not exist on the
 /// page - for example it's expected that most content platforms have some social components, etc.
 #[derive(Debug, Clone, Copy, PartialEq)]
 #[repr(u32)]
@@ -48,8 +48,9 @@ impl<'de> Deserialize<'de> for ContextType {
                 return Err(serde::de::Error::custom(format!(
                     "Invalid ContextType value: {}",
                     value
-                )))
+                )));
             }
         })
     }
 }
+

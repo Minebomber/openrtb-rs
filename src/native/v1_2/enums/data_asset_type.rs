@@ -2,8 +2,8 @@ use serde::{Deserialize, Deserializer, Serialize, Serializer};
 
 /// Data Asset Types - OpenRTB Native 1.2 Section 7.4
 ///
-/// Below is a list of common asset element types of native advertising at the time of 
-/// writing this spec. This list is non-exhaustive and intended to be extended by the 
+/// Below is a list of common asset element types of native advertising at the time of
+/// writing this spec. This list is non-exhaustive and intended to be extended by the
 /// buyers and sellers as the format evolves.
 #[derive(Debug, Clone, Copy, PartialEq)]
 #[repr(u32)]
@@ -90,8 +90,9 @@ impl<'de> Deserialize<'de> for DataAssetType {
                 return Err(serde::de::Error::custom(format!(
                     "Invalid DataAssetType value: {}",
                     value
-                )))
+                )));
             }
         })
     }
 }
+

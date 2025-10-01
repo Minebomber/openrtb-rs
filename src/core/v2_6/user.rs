@@ -7,7 +7,7 @@ use serde_json::Value;
 /// The user id is an exchange artifact and may be subject to rotation policies. On mobile, this may
 /// correspond to the ID for Advertisers (IFA).
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub struct User {
+pub struct User<Ext = Value> {
     /// Exchange-specific ID for the user.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
@@ -46,5 +46,5 @@ pub struct User {
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ext: Option<Value>,
+    pub ext: Option<Ext>,
 }

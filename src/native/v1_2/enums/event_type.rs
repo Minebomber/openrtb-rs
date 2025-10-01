@@ -49,8 +49,9 @@ impl<'de> Deserialize<'de> for EventType {
                 return Err(serde::de::Error::custom(format!(
                     "Invalid EventType value: {}",
                     value
-                )))
+                )));
             }
         })
     }
 }
+

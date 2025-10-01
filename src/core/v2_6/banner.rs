@@ -8,7 +8,7 @@ use serde_json::Value;
 /// Although the term "banner" may have very specific meaning in other contexts, here it can be
 /// many things including a simple static image, an expandable ad unit, or even in-banner video.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub struct Banner {
+pub struct Banner<Ext = Value> {
     /// Array of format objects representing the banner sizes permitted.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub format: Option<Vec<Format>>,
@@ -75,5 +75,5 @@ pub struct Banner {
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ext: Option<Value>,
+    pub ext: Option<Ext>,
 }

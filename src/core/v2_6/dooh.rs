@@ -6,7 +6,7 @@ use serde_json::Value;
 ///
 /// A bid request with a DOOH object must not contain a site or app object.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub struct Dooh {
+pub struct Dooh<Ext = Value> {
     /// Exchange-specific DOOH ID.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
@@ -49,5 +49,5 @@ pub struct Dooh {
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ext: Option<Value>,
+    pub ext: Option<Ext>,
 }

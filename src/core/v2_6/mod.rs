@@ -36,9 +36,6 @@ pub mod bid;
 pub mod bid_response;
 pub mod seat_bid;
 
-// Default functions
-pub mod defaults;
-
 // Re-export all structs for easy access
 pub use app::*;
 pub use audio::*;
@@ -51,7 +48,6 @@ pub use channel::*;
 pub use content::*;
 pub use data::*;
 pub use deal::*;
-pub use defaults::*;
 pub use device::*;
 pub use dooh::*;
 pub use format::*;

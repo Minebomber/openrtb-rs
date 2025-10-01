@@ -8,7 +8,7 @@ use serde_json::Value;
 /// interpreted as the user's current location. When subordinate to a User object, it indicates the
 /// location of the user's home base.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub struct Geo {
+pub struct Geo<Ext = Value> {
     /// Latitude from -90.0 to +90.0, where negative is south.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub lat: Option<f64>,
@@ -63,5 +63,5 @@ pub struct Geo {
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ext: Option<Value>,
+    pub ext: Option<Ext>,
 }

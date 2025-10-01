@@ -3,7 +3,7 @@ use serde_json::Value;
 
 /// Further identification of a software component.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub struct Brand {
+pub struct Brand<Ext = Value> {
     /// Browser name or other software component.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub brand: Option<String>,
@@ -14,5 +14,5 @@ pub struct Brand {
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ext: Option<Value>,
+    pub ext: Option<Ext>,
 }

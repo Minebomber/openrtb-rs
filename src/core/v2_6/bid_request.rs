@@ -9,7 +9,7 @@ use serde_json::Value;
 /// required as is at least one `Imp` object. Other attributes in this top-level object establish
 /// rules and restrictions that apply to all impressions being offered.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub struct BidRequest {
+pub struct BidRequest<Ext = Value> {
     /// ID of the bid request, assigned by the exchange, and unique for the exchange's subsequent
     /// tracking of the responses. The exchange may use different values for different recipients.
     pub id: String,
@@ -100,5 +100,9 @@ pub struct BidRequest {
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ext: Option<Value>,
+    pub ext: Option<Ext>,
+}
+
+fn default_at() -> Option<AuctionType> {
+    Some(AuctionType::SecondPricePlus)
 }

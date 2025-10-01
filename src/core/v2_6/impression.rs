@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub struct Impression {
+pub struct Impression<Ext = Value> {
     /// A unique identifier for this impression within the context of the bid request.
     pub id: String,
 
@@ -78,5 +78,9 @@ pub struct Impression {
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ext: Option<Value>,
+    pub ext: Option<Ext>,
+}
+
+fn default_bidfloorcur() -> Option<String> {
+    Some("USD".to_string())
 }

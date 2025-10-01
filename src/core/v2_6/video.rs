@@ -8,7 +8,7 @@ use serde_json::Value;
 /// Many of the fields are non-essential for minimally viable transactions, but are included to
 /// offer fine control when needed. Video in OpenRTB generally assumes compliance with the VAST standard.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub struct Video {
+pub struct Video<Ext = Value> {
     /// Content MIME types supported (e.g., "video/x-ms-wmv", "video/mp4").
     pub mimes: Vec<String>,
 
@@ -133,5 +133,17 @@ pub struct Video {
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ext: Option<Value>,
+    pub ext: Option<Ext>,
+}
+
+fn default_skip_min() -> Option<u32> {
+    Some(0)
+}
+
+fn default_skip_after() -> Option<u32> {
+    Some(0)
+}
+
+fn default_boxingallowed() -> Option<BoxingAllowedFlag> {
+    Some(BoxingAllowedFlag::Allowed)
 }

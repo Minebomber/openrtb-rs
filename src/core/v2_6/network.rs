@@ -3,7 +3,7 @@ use serde_json::Value;
 
 /// This object is used to define a content network the content belongs to.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub struct Network {
+pub struct Network<Ext = Value> {
     /// Network the content belongs to.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
@@ -18,5 +18,5 @@ pub struct Network {
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ext: Option<Value>,
+    pub ext: Option<Ext>,
 }

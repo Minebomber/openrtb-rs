@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub struct Site {
+pub struct Site<Ext = Value> {
     /// Exchange-specific site ID.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
@@ -62,5 +62,5 @@ pub struct Site {
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ext: Option<Value>,
+    pub ext: Option<Ext>,
 }

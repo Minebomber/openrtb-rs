@@ -7,7 +7,7 @@ use serde_json::Value;
 ///
 /// The actual deals are represented as a collection of Deal objects.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub struct Pmp {
+pub struct Pmp<Ext = Value> {
     /// Indicator of auction eligibility to seats named in the Direct Deals object.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub private_auction: Option<u32>,
@@ -18,5 +18,5 @@ pub struct Pmp {
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ext: Option<Value>,
+    pub ext: Option<Ext>,
 }

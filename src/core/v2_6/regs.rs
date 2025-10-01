@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub struct Regs {
+pub struct Regs<Ext = Value> {
     /// Flag indicating if this request is subject to the COPPA regulations established by the USA FTC.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub coppa: Option<CoppaFlag>,
@@ -14,5 +14,5 @@ pub struct Regs {
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ext: Option<Value>,
+    pub ext: Option<Ext>,
 }

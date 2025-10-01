@@ -5,7 +5,7 @@ use serde_json::Value;
 /// in the bid request via the `impid` attribute and constitutes an offer to buy that impression for a
 /// given price.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub struct Bid {
+pub struct Bid<Ext = Value> {
     /// Bidder generated bid ID to assist with logging/tracking.
     pub id: String,
 
@@ -114,5 +114,5 @@ pub struct Bid {
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ext: Option<Value>,
+    pub ext: Option<Ext>,
 }

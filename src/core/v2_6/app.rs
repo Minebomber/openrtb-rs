@@ -8,7 +8,7 @@ use serde_json::Value;
 /// A bid request must not contain both an App and a Site object. At a minimum, it is useful
 /// to provide an App ID or bundle, but this is not strictly required.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub struct App {
+pub struct App<Ext = Value> {
     /// Exchange-specific app ID.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
@@ -67,5 +67,5 @@ pub struct App {
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ext: Option<Value>,
+    pub ext: Option<Ext>,
 }

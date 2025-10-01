@@ -1,11 +1,11 @@
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 
 /// Context SubType IDs - OpenRTB Native 1.2 Section 7.2
-/// 
-/// Next-level context in which the ad appears. Again this reflects the primary context, 
-/// and does not imply no presence of other elements. For example, an article is likely 
-/// to contain images but is still first and foremost an article. SubType should only be 
-/// combined with the primary context type as indicated (ie for a context type of 1, only 
+///
+/// Next-level context in which the ad appears. Again this reflects the primary context,
+/// and does not imply no presence of other elements. For example, an article is likely
+/// to contain images but is still first and foremost an article. SubType should only be
+/// combined with the primary context type as indicated (ie for a context type of 1, only
 /// context subtypes that start with 1 are valid).
 #[derive(Debug, Clone, Copy, PartialEq)]
 #[repr(u32)]
@@ -85,8 +85,9 @@ impl<'de> Deserialize<'de> for ContextSubType {
                 return Err(serde::de::Error::custom(format!(
                     "Invalid ContextSubType value: {}",
                     value
-                )))
+                )));
             }
         })
     }
 }
+

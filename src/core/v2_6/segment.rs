@@ -5,7 +5,7 @@ use serde_json::Value;
 ///
 /// The parent Data object is a collection of such values from a given data provider.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub struct Segment {
+pub struct Segment<Ext = Value> {
     /// ID of the data segment specific to the data provider.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
@@ -20,5 +20,5 @@ pub struct Segment {
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ext: Option<Value>,
+    pub ext: Option<Ext>,
 }

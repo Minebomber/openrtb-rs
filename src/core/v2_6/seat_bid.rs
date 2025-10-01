@@ -7,7 +7,7 @@ use serde_json::Value;
 /// Since a bid request can include multiple impressions, each `SeatBid` can contain multiple bids each
 /// pertaining to a different impression.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub struct SeatBid {
+pub struct SeatBid<Ext = Value> {
     /// Array of 1+ `Bid` objects each related to an impression.
     pub bid: Vec<Bid>,
 
@@ -21,5 +21,5 @@ pub struct SeatBid {
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ext: Option<Value>,
+    pub ext: Option<Ext>,
 }

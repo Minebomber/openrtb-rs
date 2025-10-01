@@ -5,7 +5,7 @@ use serde_json::Value;
 ///
 /// The publisher is typically the seller in an OpenRTB transaction.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub struct Publisher {
+pub struct Publisher<Ext = Value> {
     /// Exchange-specific publisher ID.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
@@ -24,5 +24,5 @@ pub struct Publisher {
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ext: Option<Value>,
+    pub ext: Option<Ext>,
 }

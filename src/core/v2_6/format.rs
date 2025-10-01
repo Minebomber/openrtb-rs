@@ -5,7 +5,7 @@ use serde_json::Value;
 ///
 /// It defines a format as a set of width and height.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub struct Format {
+pub struct Format<Ext = Value> {
     /// Width in device independent pixels (DIPS).
     #[serde(skip_serializing_if = "Option::is_none")]
     pub w: Option<u32>,
@@ -28,5 +28,5 @@ pub struct Format {
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ext: Option<Value>,
+    pub ext: Option<Ext>,
 }

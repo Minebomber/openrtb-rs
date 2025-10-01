@@ -1,7 +1,7 @@
 //! OpenRTB Native 1.2 Specification Objects
 //!
 //! This module contains all the data structures defined in the OpenRTB Native 1.2 specification.
-//! The specification defines a sub-protocol of OpenRTB to allow for the delivery of native 
+//! The specification defines a sub-protocol of OpenRTB to allow for the delivery of native
 //! advertising formats.
 
 pub mod enums;
@@ -12,3 +12,4 @@ pub mod response;
 pub use enums::*;
 pub use request::*;
 pub use response::*;
+

@@ -41,8 +41,9 @@ impl<'de> Deserialize<'de> for EventTrackingMethod {
                 return Err(serde::de::Error::custom(format!(
                     "Invalid EventTrackingMethod value: {}",
                     value
-                )))
+                )));
             }
         })
     }
 }
+

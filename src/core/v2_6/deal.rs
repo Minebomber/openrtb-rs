@@ -1,4 +1,3 @@
-use super::*;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
@@ -7,7 +6,7 @@ use serde_json::Value;
 /// Its presence with the Pmp collection indicates that this impression is available under the terms
 /// of that deal.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub struct Deal {
+pub struct Deal<Ext = Value> {
     /// A unique identifier for the direct deal.
     pub id: String,
 
@@ -36,5 +35,9 @@ pub struct Deal {
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ext: Option<Value>,
+    pub ext: Option<Ext>,
+}
+
+fn default_bidfloorcur() -> Option<String> {
+    Some("USD".to_string())
 }

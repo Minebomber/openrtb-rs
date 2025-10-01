@@ -10,7 +10,7 @@ pub enum PlacementType {
     InFeed = 1,
     /// In the atomic unit of the content - IE in the article page or single image page
     InContent = 2,
-    /// Outside the core content - for example in the ads section on the right rail, 
+    /// Outside the core content - for example in the ads section on the right rail,
     /// as a banner-style placement near the content, etc.
     OutsideContent = 3,
     /// Recommendation widget, most commonly presented below the article content
@@ -50,8 +50,9 @@ impl<'de> Deserialize<'de> for PlacementType {
                 return Err(serde::de::Error::custom(format!(
                     "Invalid PlacementType value: {}",
                     value
-                )))
+                )));
             }
         })
     }
 }
+

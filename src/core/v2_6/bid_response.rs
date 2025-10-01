@@ -9,7 +9,7 @@ use serde_json::Value;
 /// win notice call if the bidder wins. At least one `seatbid` object is required, which contains at
 /// least one bid for an impression.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub struct BidResponse {
+pub struct BidResponse<Ext = Value> {
     /// ID of the bid request to which this is a response.
     pub id: String,
 
@@ -35,5 +35,9 @@ pub struct BidResponse {
 
     /// Placeholder for bidder-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ext: Option<Value>,
+    pub ext: Option<Ext>,
+}
+
+fn default_cur() -> Option<String> {
+    Some("USD".to_string())
 }

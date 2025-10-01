@@ -6,7 +6,7 @@ use serde_json::Value;
 ///
 /// This applies to the user, device, or other objects as specified by the parent.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub struct Data {
+pub struct Data<Ext = Value> {
     /// Exchange-specific ID for the data provider.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
@@ -21,5 +21,5 @@ pub struct Data {
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ext: Option<Value>,
+    pub ext: Option<Ext>,
 }

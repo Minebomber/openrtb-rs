@@ -12,7 +12,7 @@ use {
 /// Native ad units are intended to blend seamlessly into the surrounding content. The Native Subcommittee
 /// has developed a companion specification to OpenRTB called the Dynamic Native Ads API.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub struct Native {
+pub struct Native<Ext = Value> {
     /// Request payload complying with the Native Ad Specification.
     #[cfg(feature = "native")]
     #[serde(
@@ -39,7 +39,7 @@ pub struct Native {
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ext: Option<Value>,
+    pub ext: Option<Ext>,
 }
 
 /// Custom serializer to convert NativeRequest to JSON string
@@ -95,7 +95,7 @@ mod tests {
         };
 
         // Create a Native object with the NativeRequest
-        let native = Native {
+        let native: Native = Native {
             request: native_request.clone(),
             ver: Some("1.2".to_string()),
             api: None,
@@ -162,7 +162,7 @@ mod tests {
             ext: None,
         };
 
-        let native = Native {
+        let native: Native = Native {
             request: native_request,
             ver: Some("1.2".to_string()),
             api: Some(vec![1, 2]),

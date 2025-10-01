@@ -3,7 +3,7 @@ use serde_json::Value;
 
 /// This object is used to define a channel the content belongs to.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub struct Channel {
+pub struct Channel<Ext = Value> {
     /// Platform-specific channel identifier.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
@@ -18,5 +18,5 @@ pub struct Channel {
 
     /// Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub ext: Option<Value>,
+    pub ext: Option<Ext>,
 }
