@@ -6,7 +6,15 @@ use std::fmt;
 
 /// Duration in HH:MM:SS format as specified in VAST
 #[derive(
-    Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize, hard_xml::XmlWrite, hard_xml::XmlRead,
+    Debug,
+    Clone,
+    Default,
+    PartialEq,
+    Eq,
+    Serialize,
+    Deserialize,
+    hard_xml::XmlWrite,
+    hard_xml::XmlRead,
 )]
 #[xml(tag = "Duration")]
 pub struct Duration {
@@ -162,39 +170,6 @@ pub struct Percentage(pub f32);
 impl Percentage {
     pub fn new(value: f32) -> Self {
         Percentage(value.clamp(0.0, 100.0))
-    }
-}
-
-/// Skip offset can be percentage or time
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum SkipOffset {
-    /// Time offset in HH:MM:SS format
-    Time(Duration),
-    /// Percentage offset (e.g., "25%")
-    Percentage(String),
-}
-
-impl fmt::Display for SkipOffset {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        match self {
-            SkipOffset::Time(d) => write!(f, "{}", d),
-            SkipOffset::Percentage(p) => write!(f, "{}", p),
-        }
-    }
-}
-
-impl std::str::FromStr for SkipOffset {
-    type Err = std::convert::Infallible;
-
-    fn from_str(s: &str) -> Result<Self, Self::Err> {
-        if s.ends_with('%') {
-            Ok(SkipOffset::Percentage(s.to_string()))
-        } else {
-            Ok(SkipOffset::Time(Duration {
-                value: s.to_string(),
-            }))
-        }
     }
 }
 

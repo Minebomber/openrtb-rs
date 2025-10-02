@@ -1,5 +1,6 @@
 //! Companion banner ads that display alongside video content
 
+use super::enums::*;
 use super::*;
 use hard_xml::{XmlRead, XmlWrite};
 
@@ -17,40 +18,6 @@ pub struct CompanionAds {
     /// One or more companion ad elements
     #[xml(child = "Companion")]
     pub companion: Vec<CompanionAd>,
-}
-
-/// Companion ad requirement options
-#[derive(Debug, Clone, PartialEq)]
-pub enum CompanionAdsRequired {
-    /// All companion ads must be displayed
-    All,
-    /// At least one companion ad must be displayed
-    Any,
-    /// No requirement for companion ad display
-    None,
-}
-
-impl std::fmt::Display for CompanionAdsRequired {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            CompanionAdsRequired::All => write!(f, "all"),
-            CompanionAdsRequired::Any => write!(f, "any"),
-            CompanionAdsRequired::None => write!(f, "none"),
-        }
-    }
-}
-
-impl std::str::FromStr for CompanionAdsRequired {
-    type Err = String;
-
-    fn from_str(s: &str) -> Result<Self, Self::Err> {
-        match s {
-            "all" => Ok(CompanionAdsRequired::All),
-            "any" => Ok(CompanionAdsRequired::Any),
-            "none" => Ok(CompanionAdsRequired::None),
-            _ => Err(format!("Unknown required value: {}", s)),
-        }
-    }
 }
 
 /// A single companion ad
@@ -128,22 +95,6 @@ pub struct CompanionAd {
     /// Parameters for API frameworks
     #[xml(child = "AdParameters")]
     pub ad_parameters: Option<AdParameters>,
-}
-
-/// Resource types for companion ads
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
-pub enum CompanionResource {
-    /// Static resource (image)
-    #[xml(tag = "StaticResource")]
-    StaticResource(CompanionStaticResource),
-
-    /// IFrame resource
-    #[xml(tag = "IFrameResource")]
-    IFrameResource(CompanionIFrameResource),
-
-    /// HTML resource
-    #[xml(tag = "HTMLResource")]
-    HTMLResource(CompanionHTMLResource),
 }
 
 /// Static image resource for companion

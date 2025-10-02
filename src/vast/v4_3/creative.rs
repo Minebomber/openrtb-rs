@@ -62,23 +62,6 @@ pub struct Creative {
     pub companion_ads: Option<CompanionAds>,
 }
 
-/// The type of creative content
-#[allow(clippy::large_enum_variant)]
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
-pub enum CreativeType {
-    /// Linear video or audio creative
-    #[xml(tag = "Linear")]
-    Linear(Linear),
-
-    /// Non-linear overlay creative
-    #[xml(tag = "NonLinearAds")]
-    NonLinearAds(NonLinearAds),
-
-    /// Companion banner creative
-    #[xml(tag = "CompanionAds")]
-    CompanionAds(CompanionAds),
-}
-
 impl Creative {
     /// Create a new linear creative
     pub fn new_linear(linear: Linear) -> Self {

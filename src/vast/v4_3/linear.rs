@@ -1,5 +1,6 @@
 //! Linear creative for video and audio ads
 
+use super::enums::*;
 use super::*;
 use hard_xml::{XmlRead, XmlWrite};
 
