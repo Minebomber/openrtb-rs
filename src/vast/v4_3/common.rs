@@ -5,20 +5,9 @@ use serde::{Deserialize, Serialize};
 use std::fmt;
 
 /// Duration in HH:MM:SS format as specified in VAST
-#[derive(
-    Debug,
-    Clone,
-    Default,
-    PartialEq,
-    Eq,
-    Serialize,
-    Deserialize,
-    hard_xml::XmlWrite,
-    hard_xml::XmlRead,
-)]
-#[xml(tag = "Duration")]
+#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Duration {
-    #[xml(text)]
+    #[serde(rename = "$value")]
     pub value: String,
 }
 
@@ -29,7 +18,7 @@ impl Duration {
     }
 
     /// Parse duration into total seconds
-    pub fn to_seconds(&self) -> Result<u32, super::VastError> {
+    pub fn to_seconds(&self) -> Result<u32, VastError> {
         let parts: Vec<&str> = self.value.split(':').collect();
         if parts.len() != 3 {
             return Err(VastError::InvalidDuration(self.value.clone()));
@@ -65,12 +54,9 @@ impl std::str::FromStr for Duration {
     }
 }
 
-// Duration doesn't need custom XmlRead/XmlWrite because hard_xml
-// can derive them automatically when using #[xml(text)]
-// We'll just implement Display and FromStr for attribute usage
-
 /// MIME type for media files
 #[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct MimeType(pub String);
 
 impl MimeType {
@@ -93,24 +79,9 @@ impl std::str::FromStr for MimeType {
     }
 }
 
-impl hard_xml::XmlWrite for MimeType {
-    fn to_writer<W: std::io::Write>(
-        &self,
-        writer: &mut hard_xml::XmlWriter<W>,
-    ) -> hard_xml::XmlResult<()> {
-        writer.write_text(&self.0).map_err(hard_xml::XmlError::IO)
-    }
-}
-
-impl<'a> hard_xml::XmlRead<'a> for MimeType {
-    fn from_reader(reader: &mut hard_xml::XmlReader<'a>) -> hard_xml::XmlResult<Self> {
-        let s = reader.read_text("MimeType")?;
-        Ok(MimeType(s.to_string()))
-    }
-}
-
 /// A URI/URL reference
 #[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Uri(pub String);
 
 impl Uri {
@@ -137,24 +108,9 @@ impl std::str::FromStr for Uri {
     }
 }
 
-impl hard_xml::XmlWrite for Uri {
-    fn to_writer<W: std::io::Write>(
-        &self,
-        writer: &mut hard_xml::XmlWriter<W>,
-    ) -> hard_xml::XmlResult<()> {
-        writer.write_text(&self.0).map_err(hard_xml::XmlError::IO)
-    }
-}
-
-impl<'a> hard_xml::XmlRead<'a> for Uri {
-    fn from_reader(reader: &mut hard_xml::XmlReader<'a>) -> hard_xml::XmlResult<Self> {
-        let s = reader.read_text("Uri")?;
-        Ok(Uri(s.to_string()))
-    }
-}
-
 /// Language code (e.g., "en", "es", "fr")
 #[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Language(pub String);
 
 impl Language {
@@ -165,6 +121,7 @@ impl Language {
 
 /// Represents a percentage value (0-100)
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Percentage(pub f32);
 
 impl Percentage {
@@ -175,6 +132,7 @@ impl Percentage {
 
 /// Ad ID type
 #[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct AdId(pub String);
 
 impl AdId {
@@ -185,6 +143,7 @@ impl AdId {
 
 /// Creative ID type
 #[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct CreativeId(pub String);
 
 impl CreativeId {
@@ -195,6 +154,7 @@ impl CreativeId {
 
 /// API Framework identifier
 #[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ApiFramework(pub String);
 
 impl ApiFramework {
@@ -217,18 +177,3 @@ impl std::str::FromStr for ApiFramework {
     }
 }
 
-impl hard_xml::XmlWrite for ApiFramework {
-    fn to_writer<W: std::io::Write>(
-        &self,
-        writer: &mut hard_xml::XmlWriter<W>,
-    ) -> hard_xml::XmlResult<()> {
-        writer.write_text(&self.0).map_err(hard_xml::XmlError::IO)
-    }
-}
-
-impl<'a> hard_xml::XmlRead<'a> for ApiFramework {
-    fn from_reader(reader: &mut hard_xml::XmlReader<'a>) -> hard_xml::XmlResult<Self> {
-        let s = reader.read_text("ApiFramework")?;
-        Ok(ApiFramework(s.to_string()))
-    }
-}

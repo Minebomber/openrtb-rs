@@ -1,34 +1,34 @@
 //! Ad element and related types
 
 use super::*;
-use hard_xml::{XmlRead, XmlWrite};
+use serde::{Deserialize, Serialize};
 
 /// Container for a single ad within a VAST response.
 ///
 /// An Ad element contains all data necessary to display an ad. Each Ad represents either
 /// an InLine ad (containing all creative files and tracking URIs) or a Wrapper ad
 /// (redirecting to another VAST response).
-#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
-#[xml(tag = "Ad")]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[serde(rename = "Ad")]
 pub struct Ad {
     /// Unique identifier for the ad
-    #[xml(attr = "id")]
+    #[serde(rename = "@id")]
     pub id: String,
 
     /// Indicates the sequence number in which the ad should be displayed within an ad pod
-    #[xml(attr = "sequence")]
+    #[serde(rename = "@sequence", skip_serializing_if = "Option::is_none")]
     pub sequence: Option<u32>,
 
     /// Indicates whether the ad is conditional (e.g., based on user opt-in)
-    #[xml(attr = "conditionalAd")]
+    #[serde(rename = "@conditionalAd", skip_serializing_if = "Option::is_none")]
     pub conditional_ad: Option<bool>,
 
     /// InLine ad content
-    #[xml(child = "InLine")]
+    #[serde(rename = "InLine", skip_serializing_if = "Option::is_none")]
     pub inline: Option<InLine>,
 
     /// Wrapper ad content
-    #[xml(child = "Wrapper")]
+    #[serde(rename = "Wrapper", skip_serializing_if = "Option::is_none")]
     pub wrapper: Option<Wrapper>,
 }
 
@@ -65,3 +65,4 @@ impl Ad {
         self.wrapper.is_some()
     }
 }
+

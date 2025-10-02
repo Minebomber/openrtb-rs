@@ -1,37 +1,37 @@
 //! The root VAST element and its attributes
 
 use super::*;
-use hard_xml::{XmlRead, XmlWrite};
+use serde::{Deserialize, Serialize};
 
 /// The root element of a VAST document.
 ///
 /// VAST (Video Ad Serving Template) is an XML schema that defines the structure for serving
 /// video ads. The VAST element is the root of the document and contains one or more Ad elements.
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
-#[xml(tag = "VAST")]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename = "VAST")]
 pub struct Vast {
     /// The VAST version - should be "4.3" for this implementation
-    #[xml(attr = "version")]
+    #[serde(rename = "@version")]
     pub version: String,
 
     /// Optional identifier for the VAST response
-    #[xml(attr = "id")]
+    #[serde(rename = "@id", skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
 
     /// Indicates the sequence number of the VAST response when used in a pod
-    #[xml(attr = "sequence")]
+    #[serde(rename = "@sequence", skip_serializing_if = "Option::is_none")]
     pub sequence: Option<u32>,
 
     /// Indicates whether the ad is conditional (e.g., based on user opt-in)
-    #[xml(attr = "conditionalAd")]
+    #[serde(rename = "@conditionalAd", skip_serializing_if = "Option::is_none")]
     pub conditional_ad: Option<bool>,
 
     /// Container for one or more Ad elements
-    #[xml(child = "Ad")]
+    #[serde(rename = "Ad", default, skip_serializing_if = "Vec::is_empty")]
     pub ads: Vec<Ad>,
 
     /// URI to request if there are errors processing the VAST response
-    #[xml(child = "Error")]
+    #[serde(rename = "Error", default, skip_serializing_if = "Vec::is_empty")]
     pub errors: Vec<Error>,
 }
 
@@ -67,7 +67,7 @@ impl Default for Vast {
 
 impl std::fmt::Display for Vast {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match hard_xml::XmlWrite::to_string(self) {
+        match quick_xml::se::to_string(self) {
             Ok(s) => write!(f, "{}", s),
             Err(_) => Err(std::fmt::Error),
         }
@@ -75,10 +75,10 @@ impl std::fmt::Display for Vast {
 }
 
 impl std::str::FromStr for Vast {
-    type Err = hard_xml::XmlError;
+    type Err = quick_xml::DeError;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        hard_xml::XmlRead::from_str(s)
+        quick_xml::de::from_str(s)
     }
 }
 
@@ -86,10 +86,11 @@ impl std::str::FromStr for Vast {
 ///
 /// The Error element contains a URI that is pinged when there is an error
 /// processing the VAST response.
-#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
-#[xml(tag = "Error")]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[serde(rename = "Error")]
 pub struct Error {
     /// The error tracking URI
-    #[xml(text)]
+    #[serde(rename = "$value")]
     pub uri: Uri,
 }
+

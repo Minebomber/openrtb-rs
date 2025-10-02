@@ -1,20 +1,20 @@
 //! Ad parameters for API frameworks
 
-use hard_xml::{XmlRead, XmlWrite};
+use serde::{Deserialize, Serialize};
 
 /// Parameters for any embedded API
 ///
 /// The AdParameters element provides a string of data that can be passed
 /// to the creative for use with an API framework.
-#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
-#[xml(tag = "AdParameters")]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[serde(rename = "AdParameters")]
 pub struct AdParameters {
     /// Whether the parameters are XML-encoded
-    #[xml(attr = "xmlEncoded")]
+    #[serde(rename = "@xmlEncoded", skip_serializing_if = "Option::is_none")]
     pub xml_encoded: Option<bool>,
 
     /// The parameter data
-    #[xml(text)]
+    #[serde(rename = "$value")]
     pub data: String,
 }
 

@@ -7,7 +7,7 @@ use thiserror::Error;
 pub enum VastError {
     /// XML parsing error
     #[error("XML parsing error: {0}")]
-    XmlParse(#[from] hard_xml::XmlError),
+    XmlParse(#[from] quick_xml::DeError),
 
     /// Invalid VAST version
     #[error("Invalid VAST version: expected 4.3, got {0}")]
@@ -28,5 +28,24 @@ pub enum VastError {
     /// Duration parsing error
     #[error("Invalid duration format: {0}")]
     InvalidDuration(String),
-}
 
+    /// Invalid tracking event
+    #[error("Invalid tracking event: {0}")]
+    InvalidTrackingEvent(String),
+
+    /// Invalid companion ads required value
+    #[error("Invalid companion ads required value: {0}")]
+    InvalidCompanionAdsRequired(String),
+
+    /// Invalid delivery type
+    #[error("Invalid delivery type: {0}")]
+    InvalidDeliveryType(String),
+
+    /// Invalid icon position
+    #[error("Invalid icon position: {0}")]
+    InvalidIconPosition(String),
+
+    /// Invalid pricing model
+    #[error("Invalid pricing model: {0}")]
+    InvalidPricingModel(String),
+}

@@ -1,48 +1,51 @@
 //! Extension elements for custom VAST extensions
 
-use hard_xml::{XmlRead, XmlWrite};
+use serde::{Deserialize, Serialize};
 
 /// Container for ad-level extensions
-#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
-#[xml(tag = "Extensions")]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[serde(rename = "Extensions")]
 pub struct Extensions {
     /// List of extensions
-    #[xml(child = "Extension")]
+    #[serde(rename = "Extension", default, skip_serializing_if = "Vec::is_empty")]
     pub extension: Vec<Extension>,
 }
 
 /// A single extension element
-#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
-#[xml(tag = "Extension")]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[serde(rename = "Extension")]
 pub struct Extension {
     /// Type identifier for the extension
-    #[xml(attr = "type")]
+    #[serde(rename = "@type", skip_serializing_if = "Option::is_none")]
     pub extension_type: Option<String>,
 
     /// The extension content (can contain any valid XML)
-    #[xml(text)]
+    #[serde(rename = "$value")]
     pub content: String,
 }
 
 /// Container for creative-level extensions
-#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
-#[xml(tag = "CreativeExtensions")]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[serde(rename = "CreativeExtensions")]
 pub struct CreativeExtensions {
     /// List of creative extensions
-    #[xml(child = "CreativeExtension")]
+    #[serde(
+        rename = "CreativeExtension",
+        default,
+        skip_serializing_if = "Vec::is_empty"
+    )]
     pub creative_extension: Vec<CreativeExtension>,
 }
 
 /// A single creative extension element
-#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
-#[xml(tag = "CreativeExtension")]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[serde(rename = "CreativeExtension")]
 pub struct CreativeExtension {
     /// Type identifier for the extension
-    #[xml(attr = "type")]
+    #[serde(rename = "@type", skip_serializing_if = "Option::is_none")]
     pub extension_type: Option<String>,
 
     /// The extension content (can contain any valid XML)
-    #[xml(text)]
+    #[serde(rename = "$value")]
     pub content: String,
 }
-

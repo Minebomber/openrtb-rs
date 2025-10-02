@@ -1,20 +1,14 @@
 //! Creative elements containing the actual ad content
 
-// use crate::v4_3::common::ApiFramework;
-// use crate::v4_3::companion::CompanionAds;
-// use crate::v4_3::extensions::CreativeExtensions;
-// use crate::v4_3::linear::Linear;
-// use crate::v4_3::non_linear::NonLinearAds;
-// use crate::v4_3::universal_ad_id::UniversalAdId;
 use super::*;
-use hard_xml::{XmlRead, XmlWrite};
+use serde::{Deserialize, Serialize};
 
 /// Container element for one or more Creative elements
-#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
-#[xml(tag = "Creatives")]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[serde(rename = "Creatives")]
 pub struct Creatives {
     /// List of creative elements
-    #[xml(child = "Creative")]
+    #[serde(rename = "Creative", default, skip_serializing_if = "Vec::is_empty")]
     pub creative: Vec<Creative>,
 }
 
@@ -22,43 +16,43 @@ pub struct Creatives {
 ///
 /// Each Creative contains one of Linear, NonLinearAds, or CompanionAds,
 /// which defines the type of creative content.
-#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
-#[xml(tag = "Creative")]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[serde(rename = "Creative")]
 pub struct Creative {
     /// Optional identifier for the creative
-    #[xml(attr = "id")]
+    #[serde(rename = "@id", skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
 
     /// The preferred order in which multiple Creatives should be displayed
-    #[xml(attr = "sequence")]
+    #[serde(rename = "@sequence", skip_serializing_if = "Option::is_none")]
     pub sequence: Option<u32>,
 
     /// Identifies the API framework used for any included API resources
-    #[xml(attr = "apiFramework")]
+    #[serde(rename = "@apiFramework", skip_serializing_if = "Option::is_none")]
     pub api_framework: Option<ApiFramework>,
 
     /// Ad-ID value of the creative
-    #[xml(attr = "adId")]
+    #[serde(rename = "@adId", skip_serializing_if = "Option::is_none")]
     pub ad_id: Option<String>,
 
     /// Universal Ad ID for the creative
-    #[xml(child = "UniversalAdId")]
+    #[serde(rename = "UniversalAdId", skip_serializing_if = "Option::is_none")]
     pub universal_ad_id: Option<UniversalAdId>,
 
     /// Creative extensions
-    #[xml(child = "CreativeExtensions")]
+    #[serde(rename = "CreativeExtensions", skip_serializing_if = "Option::is_none")]
     pub creative_extensions: Option<CreativeExtensions>,
 
     /// Linear creative content
-    #[xml(child = "Linear")]
+    #[serde(rename = "Linear", skip_serializing_if = "Option::is_none")]
     pub linear: Option<Linear>,
 
     /// Non-linear creative content
-    #[xml(child = "NonLinearAds")]
+    #[serde(rename = "NonLinearAds", skip_serializing_if = "Option::is_none")]
     pub non_linear_ads: Option<NonLinearAds>,
 
     /// Companion creative content
-    #[xml(child = "CompanionAds")]
+    #[serde(rename = "CompanionAds", skip_serializing_if = "Option::is_none")]
     pub companion_ads: Option<CompanionAds>,
 }
 

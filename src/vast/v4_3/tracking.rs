@@ -1,32 +1,31 @@
 //! Tracking events for VAST ads
 
-use super::enums::*;
 use super::*;
-use hard_xml::{XmlRead, XmlWrite};
+use serde::{Deserialize, Serialize};
 
 /// Container for tracking events
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
-#[xml(tag = "TrackingEvents")]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename = "TrackingEvents")]
 pub struct TrackingEvents {
     /// List of tracking events
-    #[xml(child = "Tracking")]
+    #[serde(rename = "Tracking", default, skip_serializing_if = "Vec::is_empty")]
     pub tracking: Vec<Tracking>,
 }
 
 /// A single tracking event
-#[derive(Debug, Clone, PartialEq, XmlWrite, XmlRead)]
-#[xml(tag = "Tracking")]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename = "Tracking")]
 pub struct Tracking {
     /// The type of event to track
-    #[xml(attr = "event")]
+    #[serde(rename = "@event")]
     pub event: TrackingEvent,
 
     /// Offset for progress events (percentage or time)
-    #[xml(attr = "offset")]
+    #[serde(rename = "@offset", skip_serializing_if = "Option::is_none")]
     pub offset: Option<String>,
 
     /// The tracking URI
-    #[xml(text)]
+    #[serde(rename = "$value")]
     pub uri: Uri,
 }
 
@@ -62,3 +61,4 @@ impl Default for TrackingEvents {
         Self::new()
     }
 }
+

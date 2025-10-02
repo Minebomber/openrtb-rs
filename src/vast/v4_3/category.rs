@@ -1,20 +1,20 @@
 //! Category information for ads
 
-use hard_xml::{XmlRead, XmlWrite};
+use serde::{Deserialize, Serialize};
 
 /// Category element for ad categorization
 ///
 /// The Category element provides IAB standard content categories
 /// for the ad content.
-#[derive(Debug, Clone, Default, PartialEq, XmlWrite, XmlRead)]
-#[xml(tag = "Category")]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[serde(rename = "Category")]
 pub struct Category {
     /// The authority that defines the categorization scheme
-    #[xml(attr = "authority")]
+    #[serde(rename = "@authority")]
     pub authority: String,
 
     /// The category code/identifier
-    #[xml(text)]
+    #[serde(rename = "$value")]
     pub code: String,
 }
 
